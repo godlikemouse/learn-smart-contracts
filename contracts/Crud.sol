@@ -16,7 +16,7 @@ contract Crud {
     }
 
     // This method is a private convenience method for finding the index
-    // of a user by id.
+    // of a user by id. If the user is not found, a revert is issued.
     function find(uint256 _id) private view returns (uint256) {
         for (uint256 i = 0; i < users.length; i++) {
             if (users[i].id == _id) {
