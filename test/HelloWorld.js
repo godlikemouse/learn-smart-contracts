@@ -11,7 +11,7 @@ contract("HelloWorld", () => {
         assert(helloWorld.address != "");
     });
 
-    it("hello method", async () => {
+    it("Calling the hello method", async () => {
         const response = await helloWorld.hello();
         assert(response == "Hello World");
     });
