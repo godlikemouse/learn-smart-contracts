@@ -19,10 +19,10 @@ contract("Crud", () => {
     });
 
     it("Calling the update method", async () => {
-        await crud.update(1, "Jason Graves");
+        await crud.update(1, "Jasper");
         const result = await crud.read(1);
         assert(result[0].toNumber() == 1);
-        assert(result[1] == "Jason Graves");
+        assert(result[1] == "Jasper");
     });
 
     it("Calling the update method (revert)", async () => {
@@ -39,6 +39,16 @@ contract("Crud", () => {
         await crud.destroy(1);
         try {
             const result = await crud.read(1);
+        } catch (ex) {
+            assert(ex.message.includes("User not found."));
+            return;
+        }
+        assert(false);
+    });
+
+    it("Calling the destroy method (revert)", async () => {
+        try {
+            await crud.destroy(1);
         } catch (ex) {
             assert(ex.message.includes("User not found."));
             return;
