@@ -13,7 +13,8 @@
     "web3": "^1.8.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "contract-artifact": "cp ../../build/contracts/AdvancedStorage.json src/contracts/",
+    "start": "npm run contract-artifact && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

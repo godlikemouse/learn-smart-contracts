@@ -10,17 +10,18 @@ function App() {
     const [addValue, setAddValue] = useState(null);
     const [getValue, setGetValue] = useState(null);
 
+    // convenience method for retrieving the web3 provider
     function getWeb3() {
         return new Promise((resolve, reject) => {
-            if ("web3" in window) {
-                return resolve(new Web3(window.web3.currentProvider));
-            }
-
             if ("ethereum" in window) {
                 window.ethereum
                     .enable()
                     .then(() => resolve(new Web3(window.ethereum)))
                     .catch((ex) => reject(ex));
+            }
+
+            if ("web3" in window) {
+                return resolve(new Web3(window.web3.currentProvider));
             }
 
             resolve(
@@ -31,6 +32,7 @@ function App() {
         });
     }
 
+    // method for retrieving the smart contract interface
     const getContract = useCallback(async () => {
         const web3 = await getWeb3();
         const deploymentKey = Object.keys(AdvancedStorage.networks)[0];
@@ -40,11 +42,13 @@ function App() {
         );
     }, []);
 
+    // method for retrieveing all available accounts
     async function getAccounts() {
         const web3 = await getWeb3();
         return await web3.eth.getAccounts();
     }
 
+    // invokes the getAll method of the contract
     const invokeGetAll = useCallback(async () => {
         const contract = await getContract();
         const result = await contract.methods.getAll().call();
@@ -52,6 +56,7 @@ function App() {
         console.info("getAll", result);
     }, [allResult, getContract]);
 
+    // inovkes the length method of the contract
     const invokeLength = useCallback(async () => {
         const contract = await getContract();
         const result = await contract.methods.length().call();
@@ -59,12 +64,14 @@ function App() {
         console.info("length", result);
     }, [getContract]);
 
+    // invokes the get method of the contract
     async function invokeGet() {
         const contract = await getContract();
         const result = await contract.methods.get(getValue).call();
         setGetResult(result);
     }
 
+    // invokes the add method of the contract
     async function invokeAdd() {
         const accounts = await getAccounts();
         const contract = await getContract();
@@ -73,6 +80,7 @@ function App() {
         invokeLength();
     }
 
+    // call getAll and length on load
     useEffect(() => {
         invokeGetAll();
         invokeLength();

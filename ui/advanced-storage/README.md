@@ -2,9 +2,24 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This project uses an actual wallet to execute transactions against.
+
+Ensure that you have truffle running and either MetaMask or another wallet with an account that has been restored by using the truffle mnemonic phrases.
+
+Connect the wallet to the Truffle local development network:
+
+    URL: http://localhost:9545
+    Chain ID: 1337
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm run contract-artifact`
+
+Copies the build/contracts artifact into the `src/contracts` directory so that
+it can be imported in React code. This runs automatically as a prebuild step
+to `npm start`.
 
 ### `npm start`
 
