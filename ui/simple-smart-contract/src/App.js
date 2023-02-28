@@ -7,14 +7,6 @@ function App() {
     const [accounts, setAccounts] = useState([]);
 
     useEffect(() => {
-        /*
-        let contractABI = [];
-        const simpleSmartContract = new web3.eth.Contract(
-            contractABI,
-            process.env.REACT_APP_WEB3_CONTRACT_ADDRESS
-        );
-        */
-
         const web3 = new Web3(
             `http://${process.env.REACT_APP_WEB3_HOST}:${process.env.REACT_APP_WEB3_PORT}`
         );
@@ -27,6 +19,7 @@ function App() {
 
     return (
         <div className="App">
+            <h1>Simple Smart Contract - Listing Accounts</h1>
             <b>Accounts:</b>
             <ul>
                 {accounts.map((acc, idx) => (
