@@ -2,13 +2,13 @@
 
 ### Dependencies
 
-Ensure truffle and ganache are installed
+Ensure truffle is installed
 
-    yay -S truffle ganache-bin
+    yay -S truffle
 
-Start Ganache
+Start truffle development:
 
-    ganache losslesscut --no-sandbox
+    truffle develop
 
 Select "Quickstart" from the Ganache UI. Take note of the RPC Server information.
 
@@ -18,13 +18,25 @@ Update the truffle-config.js with the RPC info for the `development` JSON sectio
 
     truffle compile
 
+Or under truffle development:
+
+    truffle(develop)> compile
+
 ### Deploying
 
     truffle deploy
 
+Or under truffle development:
+
+    truffle(develop)> deploy
+
 To ensure latest code changes execute the following:
 
     truffle deploy --reset
+
+Or under truffle development:
+
+    truffle(develop)> deploy --reset
 
 To configure Ganache to use the deployed development contract. Click the "Contracts" tab in the Ganache UI and add the `truffle-config.js` file. Deploy the contract again and the contract addresses should show up correctly in the Ganache UI.
 
@@ -34,11 +46,13 @@ To run the test suite, execute the following:
 
     truffle test
 
-To interactively communicate with the contract:
+Or under truffle development:
 
-    truffle console
+    test
 
 At the truffle console, interact with the contract:
 
-    truffle(development)> let instance = await SimpleSmartContract.deployed()
-    truffle(development)> let accounts = await web3.eth.getAccounts()
+    truffle(develop)> let ssc = await SimpleSmartContract.deployed()
+    truffle(develop)> let hw = await HelloWorld.deployed()
+    truffle(develop)> hw.hello()
+    truffle(develop)> let acc = await web3.eth.getAccounts()
