@@ -5,6 +5,8 @@ pragma solidity ^0.8.17;
 // This simple contract demonstrates the ability to receive payments and map
 // those payments to account addresses.
 
+// TODO: add ownership and limit balanceOf to owner only
+
 contract MappingPayable {
     mapping(address => uint256) balances;
     uint256 total;
