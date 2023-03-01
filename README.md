@@ -18,15 +18,49 @@ Each contract has a corresponding test and ui implementation. You will find the 
 
 ## Dependencies
 
-Ensure truffle is installed
+Ensure truffle and npm is installed
 
-    yay -S truffle
+    yay -S truffle nodejs
+
+Next install the npm dependencies for truffle:
+
+    npm i
 
 ## Local Development Mode
 
 Start truffle in development mode:
 
     truffle develop
+
+## Testnet Development Mode (Görli)
+
+The `truffle-config.js` has been setup to work with the Görli testnet.  To use the Görli testnet, create a file called `.secrets` at the root.
+
+    touch .secrets
+
+Populate the file with the following JSON:
+
+    {
+        "seed": "<your-mnemonic-seed>",
+        "apiKey": "<your-infura-api-key>"
+    }
+
+The seed can be retrieved after starting truffle in development mode. For example:
+
+    Mnemonic: off brother wonder crime sweet shoulder ugly defy dwarf crowd bundle inhale
+
+The `seed` and `apiKey` are only needed to run on non-local testnet chains. If you are only running in local development mode, then you can leave both `seed` and `apiKey` as empty strings.
+
+    {
+        "seed": "",
+        "apiKey": ""
+    }
+
+The `apiKey` requires a free account and a project to be setup on [infura.io](infura.io).  Once a new Etherum project has been created, change the network selection to `Görli` and copy the `API Key` into the `.settings` file replacing `apiKey` value.
+
+Finally, start truffle using the Görli network:
+
+    truffle develop --network gorli
 
 ## Building
 
