@@ -1,20 +1,36 @@
-## Development Environment Setup
+# Learn how to write Ethereum smart contracts
 
-### Dependencies
+This repository covers the modified code following the freeCodeCamp.org tutorial
+[Build 5 Dapps on the Ethereum Blockchain - Beginner Tutorial](https://www.youtube.com/watch?v=8wMKq7HvbKw) on YouTube. This repository has been updated to work with React instead of vanilla JavaScript and webpack.
+
+# Development Environment Setup
+
+For my setup, I used Arch Linux. Please adapt the packages to your particular OS and distribution.
+
+## Organization
+
+Each contract has a corresponding test and ui implementation. You will find the matching name under `/test` and `/ui` respectively.
+
+-   `/contracts` The Solidity contract source code.
+-   `/migrations` The contract deployment source code.
+-   `/test` The contract test source code.
+-   `/ui` The web front end for each contract.
+
+## Dependencies
 
 Ensure truffle is installed
 
     yay -S truffle
 
-Start truffle development:
+## Local Development Mode
+
+Start truffle in development mode:
 
     truffle develop
 
-Select "Quickstart" from the Ganache UI. Take note of the RPC Server information.
+## Building
 
-Update the truffle-config.js with the RPC info for the `development` JSON section.
-
-### Building
+Compile contracts directly from the command line:
 
     truffle compile
 
@@ -22,7 +38,9 @@ Or under truffle development:
 
     truffle(develop)> compile
 
-### Deploying
+## Deploying
+
+Deploy contracts directly from the command line:
 
     truffle deploy
 
@@ -38,9 +56,7 @@ Or under truffle development:
 
     truffle(develop)> deploy --reset
 
-To configure Ganache to use the deployed development contract. Click the "Contracts" tab in the Ganache UI and add the `truffle-config.js` file. Deploy the contract again and the contract addresses should show up correctly in the Ganache UI.
-
-### Testing
+## Testing
 
 To run the test suite, execute the following:
 
@@ -52,7 +68,5 @@ Or under truffle development:
 
 At the truffle console, interact with the contract:
 
-    truffle(develop)> let ssc = await SimpleSmartContract.deployed()
     truffle(develop)> let hw = await HelloWorld.deployed()
     truffle(develop)> hw.hello()
-    truffle(develop)> let acc = await web3.eth.getAccounts()
