@@ -2,6 +2,8 @@
 
 pragma solidity ^0.8.17;
 
+// This is a basic CRUD contract which creates/reads/updates/destroys a User.
+
 contract Crud {
     struct User {
         uint256 id;

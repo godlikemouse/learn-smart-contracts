@@ -51,8 +51,10 @@ function App() {
         const contract = await getContract();
         try {
             const result = await contract.methods.read(id).call();
+            console.info("invokeRead", result);
             setReadResult(result);
         } catch (ex) {
+            console.error("invokeRead:", ex);
             setReadResult(null);
         }
     }
@@ -61,27 +63,40 @@ function App() {
     async function invokeCreate() {
         const contract = await getContract();
         const accounts = await getAccounts();
-        await contract.methods.create(name).send({
-            from: accounts[0],
-        });
+        try {
+            const result = await contract.methods.create(name).send({
+                from: accounts[0],
+            });
+            console.info("invokeCreate:", result);
+        } catch (ex) {}
     }
 
     // invokes the update method of the contract
     async function invokeUpdate() {
         const contract = await getContract();
         const accounts = await getAccounts();
-        await contract.methods.update(id, name).send({
-            from: accounts[0],
-        });
+        try {
+            const result = await contract.methods.update(id, name).send({
+                from: accounts[0],
+            });
+            console.info("invokeUpdate:", result);
+        } catch (ex) {
+            console.error("invokeUpdate:", ex);
+        }
     }
 
     // invokes the destroy method of the contract
     async function invokeDestroy() {
         const contract = await getContract();
         const accounts = await getAccounts();
-        await contract.methods.destroy(id).send({
-            from: accounts[0],
-        });
+        try {
+            const result = await contract.methods.destroy(id).send({
+                from: accounts[0],
+            });
+            console.info("invokeDestroy:", result);
+        } catch (ex) {
+            console.error("invokeDestroy:", ex);
+        }
     }
 
     return (
