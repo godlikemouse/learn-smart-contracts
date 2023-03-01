@@ -3,6 +3,7 @@ const HelloWorld = artifacts.require("HelloWorld");
 const SimpleStorage = artifacts.require("SimpleStorage");
 const AdvancedStorage = artifacts.require("AdvancedStorage");
 const Crud = artifacts.require("Crud");
+const MappingPayable = artifacts.require("MappingPayable");
 
 module.exports = function (deployer) {
     deployer.deploy(SimpleSmartContract);
@@ -10,4 +11,5 @@ module.exports = function (deployer) {
     deployer.deploy(SimpleStorage);
     deployer.deploy(AdvancedStorage);
     deployer.deploy(Crud);
+    deployer.deploy(MappingPayable);
 };
