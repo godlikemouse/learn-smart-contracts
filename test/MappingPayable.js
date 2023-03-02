@@ -41,7 +41,7 @@ contract("MappingPayable", () => {
             value: web3.utils.toWei("1", "ether"),
             from: secondaryAccount,
         });
-        const balance = await mappingPayable.balanceOf(accounts[1]);
+        const balance = await mappingPayable.balanceOf(secondaryAccount);
         assert(balance.toString() == web3.utils.toWei("1", "ether"));
     });
 
@@ -50,7 +50,7 @@ contract("MappingPayable", () => {
             value: web3.utils.toWei("1", "ether"),
             from: tirtiaryAccount,
         });
-        const balance = await mappingPayable.balanceOf(accounts[2]);
+        const balance = await mappingPayable.balanceOf(tirtiaryAccount);
         assert(balance.toString() == web3.utils.toWei("1", "ether"));
     });
 
