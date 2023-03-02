@@ -46,7 +46,7 @@ contract MappingPayable {
     function withdraw(uint256 _amount) public {
         require(
             _amount <= balances[msg.sender],
-            "Withrawl amount exceeds account balance"
+            "Withdrawl amount exceeds account balance"
         );
 
         total -= _amount;
